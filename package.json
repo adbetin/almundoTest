@@ -15,6 +15,7 @@
   "private": true,
   "dependencies": {
     "@angular/cli": "1.5.4",
+    "@angular-devkit/core": "0.0.28",
     "@angular/animations": "^5.0.0",
     "@angular/common": "^5.0.0",
     "@angular/compiler": "^5.0.0",
@@ -50,7 +51,7 @@
     "tslint": "~5.7.0",
     "typescript": "~2.4.2",
     "@angular/compiler-cli": "^5.0.0",
-    "@angular-devkit/core": "0.0.28"
+
   },
   "repository": {
     "type": "git",
