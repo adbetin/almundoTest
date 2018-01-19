@@ -1,10 +1,16 @@
+
+
 .navbar {
     background-color: #002D78;
 }
 
+.container.body{
+    margin-top: 80px;
+}
+
 .navbar-brand {
     height: 80px;
-  }
+}
   
 .nav >li >a {
     padding-top: 30px;

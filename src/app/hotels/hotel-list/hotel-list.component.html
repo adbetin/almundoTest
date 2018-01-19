@@ -3,18 +3,28 @@
     filtros
   </div>
   <div class="col-xs-12 col-sm-9 col-md-8">
-    <hotel-details
-      [hotel]="selectedHotel">
-    </hotel-details>
+    <div *ngFor="let hotel of hotels" (click)="selectHotel(hotel)" [class.active]="hotel === selectedHotel">
+      
+      <div class="col-md-12 no-padding lib-item" data-category="ui">
+        <div class="lib-panel">
+          <div class="row box-shadow">
+            <div class="col-md-6">
+              <img class="lib-img" src="assets/images/hotels/{{hotel.image}}">
+            </div>
+            <div class="col-md-6">
+              <div class="lib-row lib-header">
+                  {{hotel.name}}
+                <div class="lib-header-seperator"></div>
+              </div>
+              <div class="lib-row lib-desc">
+                Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
+                Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <h2>Hoteles</h2>
-    <ul class="list-group">
-      <li class="list-group-item"
-        *ngFor="let hotel of hotels"
-        (click)="selectHotel(hotel)"
-        [class.active]="hotel === selectedHotel">
-        {{hotel.name}}
-      </li>
-    </ul>
+    </div>
   </div>
 </div>

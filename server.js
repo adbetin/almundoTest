@@ -53,7 +53,21 @@ function handleError(res, reason, message, code) {
  */
 
 app.get("/api/hotels", function (req, res) {
-    db.collection(HOTELS_COLLECTION).find({}).toArray(function (err, docs) {
+    var urlquery = req.query;
+    var query = {};
+    var starsFilter =urlquery.stars;
+    var nameFilter = urlquery.name;
+
+    if(!!starsFilter){
+        query.stars = 1;
+    }
+    
+    if(!!nameFilter){
+        query.name = new RegExp('^' + nameFilter);
+    }
+
+    console.log("query", query);
+    db.collection(HOTELS_COLLECTION).find(req.query).toArray(function (err, docs) {
         if (err) {
             handleError(res, err.message, "Failed to get hotels.");
         } else {
