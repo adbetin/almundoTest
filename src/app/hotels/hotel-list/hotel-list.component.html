@@ -1,3 +1,20 @@
-<p>
-  hotel-list works!
-</p>
+<div class="row show-grid">
+  <div class="col-xs-12 col-sm-3 col-md-4">
+    filtros
+  </div>
+  <div class="col-xs-12 col-sm-9 col-md-8">
+    <hotel-details
+      [hotel]="selectedHotel">
+    </hotel-details>
+
+    <h2>Hoteles</h2>
+    <ul class="list-group">
+      <li class="list-group-item"
+        *ngFor="let hotel of hotels"
+        (click)="selectHotel(hotel)"
+        [class.active]="hotel === selectedHotel">
+        {{hotel.name}}
+      </li>
+    </ul>
+  </div>
+</div>
