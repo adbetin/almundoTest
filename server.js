@@ -63,10 +63,11 @@ app.get("/api/hotels", function (req, res) {
     }
     
     if(!!nameFilter){
-        query.name = new RegExp('^' + nameFilter);
+        query.name = { "$regex": nameFilter, "$options": "i" } 
     }
 
     console.log("query", query);
+
     db.collection(HOTELS_COLLECTION).find(req.query).toArray(function (err, docs) {
         if (err) {
             handleError(res, err.message, "Failed to get hotels.");

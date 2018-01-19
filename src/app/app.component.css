@@ -4,8 +4,8 @@
     background-color: #002D78;
 }
 
-.container.body{
-    margin-top: 80px;
+.container-fluid.body{
+    margin-top: 90px;
 }
 
 .navbar-brand {

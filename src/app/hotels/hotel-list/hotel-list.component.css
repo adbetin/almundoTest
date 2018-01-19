@@ -1,9 +1,19 @@
+.center{
+    text-align: center;
+}
+
+.card-detail-header{
+    margin-top: 20px;
+    color: #979494;
+} 
+
 .lib-panel {
     margin-bottom: 20Px;
 }
-.lib-panel img {
+.lib-panel img.hotel{
     width: 100%;
     background-color: transparent;
+    /*max-height: 250px;*/
 }
 
 .lib-panel .row,
@@ -20,7 +30,13 @@
 .lib-panel .lib-row.lib-header {
     background-color: #FFFFFF;
     font-size: 20px;
+    font-weight: bold;
+    color: #1B7FB6;
     padding: 10px 20px 0 20px;
+}
+
+.no-break{
+    display: inline;
 }
 
 .lib-panel .lib-row.lib-header .lib-header-seperator {

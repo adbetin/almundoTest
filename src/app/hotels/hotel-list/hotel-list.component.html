@@ -1,25 +1,75 @@
 <div class="row show-grid">
-  <div class="col-xs-12 col-sm-3 col-md-4">
-    filtros
+  <div class="col-xs-12 col-sm-2 col-md-2">
+    <div class="lib-panel">
+      <div class="row box-shadow">
+        <div class="col-md-12">
+          <div class="lib-row lib-header">
+            Filtros
+          </div>
+        </div>
+      </div>
+      <div class="row box-shadow">
+        <div class="col-md-12">
+          <div class="lib-row lib-header">
+            Nombre del hotel
+            <div>
+              <input [(ngModel)]="hotelName" class="form-control">
+              <button class="btn" (click)="searchHotels()">Aceptar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row box-shadow">
+        <div class="col-md-12">
+          <div class="lib-row lib-header">
+            Estrellas
+            <div>
+              <div *ngFor="let option of options">
+                <label>
+                  <input type="checkbox" name="options" value="{{option.value}}" [(ngModel)]="option.checked" (change)="searchHotels()" /> {{option.name}}
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="col-xs-12 col-sm-9 col-md-8">
+  <div class="col-xs-12 col-sm-10 col-md-10">
     <div *ngFor="let hotel of hotels" (click)="selectHotel(hotel)" [class.active]="hotel === selectedHotel">
-      
       <div class="col-md-12 no-padding lib-item" data-category="ui">
+
         <div class="lib-panel">
           <div class="row box-shadow">
-            <div class="col-md-6">
-              <img class="lib-img" src="assets/images/hotels/{{hotel.image}}">
+
+            <div class="col-md-4">
+              <img class="lib-img hotel" src="assets/images/hotels/{{hotel.image}}" onError="this.src='assets/images/placeholder.png';">
             </div>
             <div class="col-md-6">
               <div class="lib-row lib-header">
-                  {{hotel.name}}
-                <div class="lib-header-seperator"></div>
+                {{hotel.name}}
               </div>
-              <div class="lib-row lib-desc">
-                Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
-                Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
+              <br/>
+              <div class="lib-row lib-desc no-break">
+                <span *ngFor="let i of Arr(hotel.stars).fill(1)">
+                  <img src="assets/icons/filters/star.svg" height="20px" />
+                </span>
               </div>
+              <br/>
+              <div class="lib-row lib-desc no-break">
+                <span *ngFor="let amenity of hotel.amenities">
+                  <img src="assets/icons/amenities/{{amenity}}.svg" height="20px" />
+                </span>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card-detail-header center">
+                Precio por noche por hotel
+              </div>
+
+              <div class="card-detail-header center">
+                  ars <b>{{hotel.price}}</b>
+                </div>
             </div>
           </div>
         </div>

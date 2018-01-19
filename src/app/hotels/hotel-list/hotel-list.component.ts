@@ -13,18 +13,24 @@ export class HotelListComponent implements OnInit {
 
   hotels: Hotel[];
   selectedHotel: Hotel;
+  Arr = Array;
+
+  hotelName: string = '';
+  options = [
+    { name: '5 estrellas', value: '5', checked: false },
+    { name: '4 estrellas', value: '4', checked: false },
+    { name: '3 estrellas', value: '3', checked: false },
+    { name: '2 estrellas', value: '2', checked: false },
+    { name: '1 estrellas', value: '1', checked: false }
+  ];
 
   constructor(private hotelService: HotelService) { }
 
   ngOnInit() {
-     this.hotelService
-      .gethotels()
-      .then((hotels: Hotel[]) => {
-        this.hotels = hotels.map((hotel) => {
-          return hotel;
-        });
-      });
+    this.searchHotels();
   }
+
+
 
   private getIndexOfHotel = (hotelId: String) => {
     return this.hotels.findIndex((hotel) => {
@@ -34,6 +40,30 @@ export class HotelListComponent implements OnInit {
 
   selectHotel(hotel: Hotel) {
     this.selectedHotel = hotel
+  }
+
+  searchHotels() {
+    let query = '';
+    if(this.hotelName){
+      query = "name="+this.hotelName;
+    }
+
+    for(let i = 0; i < this.options.length; i++){
+      if(this.options[i].checked){
+        if(query){
+          query += '&';
+        }
+        query += 'stars='+this.options[i].value;
+      }
+    }
+
+    this.hotelService
+    .gethotels(query)
+    .then((hotels: Hotel[]) => {
+      this.hotels = hotels.map((hotel) => {
+        return hotel;
+      });
+    });
   }
 
   createNewHotel() {
